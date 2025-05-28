@@ -29,3 +29,6 @@ body_mass_g: Body mass of the penguin (in grams) -- THIS VARIABLE WAS USED TO CR
 sex: Sex of the penguin (male or female).
 
 year: Year the observation was made.
+
+DESCRIPTION OF INTERACTIVE HISTOGRAM - In the left upper part of the graphic, there is a dropdown menu entitled "Select Species," which allows the user to select a species, with the output for that species displayed on the histogram. There is just below this a slidebar entitled "Number of bins," where the user can choose betwen 5 and 50 bins on the histogram, with the output displayed again in the histogram.
+
