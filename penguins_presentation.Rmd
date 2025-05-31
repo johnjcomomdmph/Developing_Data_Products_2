@@ -1,0 +1,60 @@
+---
+title: "Penguin Body Mass by Species"
+author: "John J. Como, MD, MPH"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(knitr)
+library(palmerpenguins)
+```
+
+## OVERVIEW
+```{r summary-table, echo=FALSE}
+penguins %>%
+  filter(!is.na(body_mass_g)) %>%
+  group_by(species) %>%
+  summarise(
+    Count = n(),
+    Mean = round(mean(body_mass_g), 1),
+    Median = round(median(body_mass_g), 1)
+  ) %>%
+  knitr::kable()
+```
+
+## ADELIE PENGUINS
+```{r adelie-plot, echo=FALSE}
+adelie <- filter(penguins, species == "Adelie", !is.na(body_mass_g))
+
+ggplot(adelie, aes(x = body_mass_g)) +
+  geom_histogram(bins = 20, fill = "#56B4E9", color = "white") +
+  theme_minimal() +
+  labs(title = "Adelie Penguin Body Mass", x = "Body Mass (g)", y = "Count")
+```
+
+## CHINSTRAP PENGUINS
+```{r, chinstrap-plot, echo=FALSE}
+chinstrap <- filter(penguins, species == "Chinstrap", !is.na(body_mass_g))
+
+ggplot(chinstrap, aes(x = body_mass_g)) +
+  geom_histogram(bins = 15, fill = "#E69F00", color = "white") +
+  theme_minimal() +
+  labs(title = "Chinstrap Penguin Body Mass", x = "Body Mass (g)", y = "Count")
+```
+
+## GENTOO PENGUINS
+```{r gentoo-plot, echo=FALSE}
+gentoo <- filter(penguins, species == "Gentoo", !is.na(body_mass_g))
+
+ggplot(gentoo, aes(x = body_mass_g)) +
+  geom_histogram(bins = 20, fill = "#009E73", color = "white") +
+  theme_minimal() +
+  labs(title = "Gentoo Penguin Body Mass", x = "Body Mass (g)", y = "Count")
+```
+
+
+
+
+
